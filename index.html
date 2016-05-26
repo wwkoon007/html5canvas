@@ -3,13 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+     <script type='text/javascript' src="kibo.js"></script>
 </head>
 <body>
 
 
 	<video id="v"  controls loop src="what.mp4"></video>
-	<canvas id="c"> something</canvas><br/>
+	<canvas id="c"> </canvas><br/>
+	<div id='about' style='display'>About Us </div>
 	<input type="text" id="topline" placeholder="Enter topline here"/>
+
+
 	<script>
 		var canvas =document.querySelector('canvas');
 		var ctx = canvas.getContext('2d');
@@ -38,6 +42,39 @@
 
 				ctx.fillText(topline,canvas.width/3, canvas.height/3);
 
+				var k = new Kibo();
+
+				k.down(['shift q'], function() {
+				  console.log('up or down arrow key pressed');
+				  ctx.strokeRect(0,0,30,30);
+				}).down('shift q', function() {
+				  //console.log('TAB key released');
+
+
+				 // document.getElementById("about").style.display = "";
+if(document.getElementById("about").style.display == "block" ) {
+    document.getElementById("about").style.display = "none";
+}
+else {
+document.getElementById("about").style.display = "block";
+}
+
+
+
+
+
+
+				});
+
+				// var c = document.querySelector("canvas");
+
+				// function handleMouseClick(evt) {
+				//         x = evt.clientX - c.offsetLeft;
+				//         y = evt.clientY - c.offsetTop;
+				//         console.log("x,y:"+x+","+y);
+				// }
+				// c.addEventListener("click", handleMouseClick, false);
+
 			}
 
 			v.addEventListener('play',function() {
@@ -49,5 +86,6 @@
 
 		})
 	</script>
+
 </body>
 </html>
